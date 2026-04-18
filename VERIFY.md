@@ -141,6 +141,21 @@ Expected: one row (the CLI's container). Zed's
 `check_for_existing_container` correctly finds the CLI container by its
 `devcontainer.*` labels and reuses it rather than creating its own.
 
+Real output from 2026-04-18:
+
+```
+9b2b92c8de6c  devcontainer-compose-test_devcontainer-app-1  project=devcontainer-compose-test_devcontainer
+```
+
+`9b2b92c8de6c` is the CLI-created container ID; after Zed attached, this
+row is unchanged and no new compose project appeared. The Zed log for
+the same session confirms the attach via `SshRemoteClient`:
+
+```
+2026-04-18T16:29:31 INFO  [remote::transport::docker] Remote platform discovered: Some(RemotePlatform { os: Linux, arch: Aarch64 })
+2026-04-18T16:30:38 INFO  [remote_server] (remote server) accepting new connections
+```
+
 This asymmetry is what makes the issue latent: users who always open Zed
 before running the CLI see duplicates; users who start with the CLI do not.
 
