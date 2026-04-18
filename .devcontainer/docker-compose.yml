@@ -1,0 +1,6 @@
+services:
+  app:
+    image: alpine:latest
+    command: sleep infinity
+    volumes:
+      - ..:/workspace:cached

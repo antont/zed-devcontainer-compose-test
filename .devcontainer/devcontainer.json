@@ -1,0 +1,6 @@
+{
+  "name": "Compose Duplicate Repro",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace"
+}
